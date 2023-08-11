@@ -6,15 +6,15 @@
  */
 int main(void)
 {
-int t = 20;
-int v = 10;
+int t = 97;
+int v = 65;
 
-while (t <= 'z')
+while (t <= 122)
 {
 putchar(t);
 t++;
 }
-while (v <= 'z')
+while (v <= 90)
 {
 putchar(v);
 v++;
