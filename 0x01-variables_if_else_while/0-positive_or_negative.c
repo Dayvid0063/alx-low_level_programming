@@ -5,7 +5,7 @@
 /**
  * main - Entry point
  * Description: 'check for number if positive or negative'
- * Return: always 0 (success)
+ * Return: 0
  */
 
 int main(void)
