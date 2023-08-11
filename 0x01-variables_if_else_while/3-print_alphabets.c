@@ -1,14 +1,13 @@
 #include <stdio.h>
 /**
  * main - Entry point
+ * Description: 'print alphabets lowercase or uppercase'
  * Return: 0
  */
 int main(void)
 {
-char t;
-char v;
-t = 'a';
-v = 'A';
+int t = 20;
+int v = 10;
 while
 (t <= 'z')
 {putchar(t);
