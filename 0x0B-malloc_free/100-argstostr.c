@@ -1,37 +1,36 @@
 #include <stdlib.h>
 #include "main.h"
 /**
- * *argstostr - func concatenates all the arguments
- * @ac: arguments num
- * @av: arguments array
+ * argstostr - func concatenates all the arguments
+ * @ac: integer entered
+ * @av: pointer array
  *
  * Return: 0
  */
 char *argstostr(int ac, char **av)
 {
-int u, v, w, x;
-char *y;
+int u, v, w = 0, x = 0;
+char *str;
 if (ac == 0 || av == NULL)
 return (NULL);
 for (u = 0; u < ac; u++)
 {
-for (v = 0; av[u][v] != '\0'; v++)
-x++;
+for (v = 0; av[u][v]; v++)
 x++;
 }
-y = malloc(sizeof(char) * (x + 1));
-if (y == NULL)
+x += ac;
+str = malloc(sizeof(char) * x + 1);
+if (str == NULL)
 return (NULL);
-w = 0;
 for (u = 0; u < ac; u++)
+for (v = 0; av[u][v]; v++)
 {
-for (v = 0; av[u][v] != '\0'; v++)
-{
-y[x] = av[u][v];
+str[w] = av[u][v];
 w++;
 }
-y[w] = '\n';
-w++;
+if (str[w] == '\0')
+{
+str[w++] = '\n';
 }
-return (y);
+return (str);
 }
