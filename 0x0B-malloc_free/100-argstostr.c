@@ -23,6 +23,7 @@ str = malloc(sizeof(char) * x + 1);
 if (str == NULL)
 return (NULL);
 for (u = 0; u < ac; u++)
+{
 for (v = 0; av[u][v]; v++)
 {
 str[w] = av[u][v];
@@ -31,6 +32,7 @@ w++;
 if (str[w] == '\0')
 {
 str[w++] = '\n';
+}
 }
 return (str);
 }
