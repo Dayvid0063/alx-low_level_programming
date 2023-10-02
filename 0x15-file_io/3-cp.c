@@ -16,7 +16,7 @@ int main(int argc, char *argv[])
 {
 int u, v, w = 1024, x, c_u, c_v;
 unsigned int mode = S_IRUSR | S_IWUSR | S_IRGRP | S_IWGRP | S_IROTH;
-char n[1024];
+char buffer[1024];
 if (argc != 3)
 {
 dprintf(STDERR_FILENO, "%s", "Usage: cp file_form file_to\n");
@@ -28,10 +28,10 @@ v = open(argv[2], O_WRONLY | O_CREAT | O_TRUNC, mode);
 check_IO_stat(v, -1, argv[2], 'W');
 while (w == 1024)
 {
-w = read(u, n, sizeof(n));
+w = read(u, buffer, sizeof(buffer));
 if (w == -1)
 check_IO_stat(-1, -1, argv[1], 'O');
-x = write(v, n, w);
+x = write(v, buffer, w);
 if (x == -1)
 check_IO_stat(-1, -1, argv[2], 'W');
 }
@@ -48,7 +48,7 @@ return (0);
  * @mode: Mode of file
  * @fd: File des.
  *
- * Return: 0
+ * Return: void
  */
 void check_IO_stat(int stat, int fd, char *filename, char mode)
 {
