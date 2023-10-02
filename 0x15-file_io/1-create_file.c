@@ -17,10 +17,9 @@ u = open(filename, O_CREAT | O_WRONLY | O_TRUNC, 0600);
 if (u == -1)
 return (-1);
 if (!text_content)
-{
-for (v = 0; text_content[v];)
-v++;
-}
+text_content = "";
+for (v = 0; text_content[v]; v++)
+;
 w = write(u, text_content, v);
 if (w == -1)
 return (-1);
