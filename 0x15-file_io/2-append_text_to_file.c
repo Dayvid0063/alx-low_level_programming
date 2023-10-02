@@ -13,15 +13,17 @@ int v;
 int w;
 if (!filename)
 return (-1);
+u = open(filename, O_WRONLY | O_APPEND);
+if (u == -1)
+return (-1);
 if (text_content != NULL)
 {
-for (v = 0; text_content[v];)
-v++;
-}
-u = open(filename, O_WRONLY | O_APPEND);
+for (v = 0; text_content[v]; v++)
+;
 w = write(u, text_content, v);
-if (u == -1 || w == -1)
+if (w == -1)
 return (-1);
+}
 close(u);
 return (1);
 }
