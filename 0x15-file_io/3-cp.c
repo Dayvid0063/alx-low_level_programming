@@ -1,4 +1,4 @@
-#include "main.h"
+#include <stdlib.h>
 #include <stdio.h>
 #include <sys/stat.h>
 #include <sys/types.h>
@@ -16,7 +16,7 @@ int main(int argc, char *argv[])
 {
 int u, v, w = 1024, x, c_u, c_v;
 unsigned int mode = S_IRUSR | S_IWUSR | S_IRGRP | S_IWGRP | S_IROTH;
-char buffer[1024];
+char n[1024];
 if (argc != 3)
 {
 dprintf(STDERR_FILENO, "%s", "Usage: cp file_form file_to\n");
@@ -28,10 +28,10 @@ v = open(argv[2], O_WRONLY | O_CREAT | O_TRUNC, mode);
 check_IO_stat(v, -1, argv[2], 'W');
 while (w == 1024)
 {
-w = read(u, buffer, sizeof(buffer));
+w = read(u, n, sizeof(n));
 if (w == -1)
 check_IO_stat(-1, -1, argv[1], 'O');
-x = write(v, buffer, w);
+x = write(v, n, w);
 if (x == -1)
 check_IO_stat(-1, -1, argv[2], 'W');
 }
