@@ -15,7 +15,7 @@ void check_IO_stat(int stat, int fd, char *filename, char mode);
 int main(int argc, char *argv[])
 {
 int u, v, w = 1024, x, c_u, c_v;
-unsigned int m = S_IRUSR | S_IWUSR | S_IRGRP | S_IWGRP | S_IROTH;
+unsigned int mode = S_IRUSR | S_IWUSR | S_IRGRP | S_IWGRP | S_IROTH;
 char n[1024];
 if (argc != 3)
 {
@@ -24,7 +24,7 @@ exit(97);
 }
 u = open(argv[1], O_RDONLY);
 check_IO_stat(u, -1, argv[1], 'O');
-v = open(argv[2], O_WRONLY | O_CREAT | O_TRUNC, m);
+v = open(argv[2], O_WRONLY | O_CREAT | O_TRUNC, mode);
 check_IO_stat(v, -1, argv[2], 'W');
 while (w == 1024)
 {
