@@ -14,12 +14,13 @@ int w;
 if (!filename)
 return (-1);
 u = open(filename, O_CREAT | O_WRONLY | O_TRUNC, 0600);
-if (text_content != NULL)
-text_content = "";
 if (u == -1)
 return (-1);
-for (v = 0; text_content[v]; v++)
-;
+if (!text_content)
+{
+for (v = 0; text_content[v];)
+v++;
+}
 w = write(u, text_content, v);
 if (w == -1)
 return (-1);
