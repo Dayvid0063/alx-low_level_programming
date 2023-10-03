@@ -68,19 +68,19 @@ printf("<unknown: %x>\n", header->e_ident[EI_CLASS]);
  */
 void scan_header(const char *filename, Elf64_Ehdr *header)
 {
-int tag = open(filename, O_RDONLY);
-if (tag == -1)
+int file_descriptor = open(filename, O_RDONLY);
+if (file_descriptor == -1)
 {
 dprintf(STDERR_FILENO, "Error: Can't read file %s\n", filename);
 exit(98);
 }
-if (read(tag, header, sizeof(Elf64_Ehdr)) == -1)
+if (read(file_descriptor, header, sizeof(Elf64_Ehdr)) == -1)
 {
-close(tag);
+close(file_descriptor);
 dprintf(STDERR_FILENO, "Error: `%s`: No such file\n", filename);
 exit(98);
 }
-close(tag);
+close(file_descriptor);
 }
 /**
  * operate - Func to operate
@@ -120,7 +120,7 @@ int main(int argc, char *argv[])
 {
 if (argc != 2)
 {
-dprintf(STDERR_FILENO, "Usage: %s <elf-file>\n", argv[0]);
+dprintf(STDERR_FILENO, "Usage: %s <elf_header>\n", argv[0]);
 exit(1);
 }
 operate(argv[1]);
