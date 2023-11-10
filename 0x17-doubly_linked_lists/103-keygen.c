@@ -6,9 +6,9 @@
  * @argc: Arg count
  * @argv: Arg vector
  *
- * Return: 0 on success, 1 otherwise
+ * Return: 0
  */
-int main(int argc, char *argv[])
+int main(int __attribute__((__unused__)) argc, char *argv[])
 {
 	char entry[7], *u;
 	int len = strlen(argv[1]), k, v;
