@@ -10,33 +10,29 @@
  */
 int r_search(int *array, size_t begin, size_t end, int value)
 {
-	size_t c, u;
+	size_t c = (begin + end) / 2;
+	size_t u;
 
 	if (begin <= end)
 	{
-		c = begin + (end - begin) / 2;
-		printf("Searching in array: ");
-
+		printf("Searching in array:");
 		for (u = begin; u <= end; u++)
-		{
-			printf("%d", array[u]);
-			if (u != end)
-				printf(", ");
-		}
+			printf("%s %d", (u == begin) ? "" : ",", array[u]);
 		printf("\n");
 
-		if (array[c] == value)
+		if (value == array[c])
 		{
 			if (c > 0 && array[c - 1] == value)
 				return (r_search(array, begin, c, value));
 			return (c);
 		}
 
-		if (array[c] < value)
-			return (r_search(array, c + 1, end, value));
+		if (value < array[c])
+			return (r_search(array, begin, c, value));
 		else
-			return (r_search(array, begin, c - 1, value));
+			return (r_search(array, c + 1, end, value));
 	}
+
 	return (-1);
 }
 
