@@ -50,8 +50,9 @@ int r_search(int *array, size_t begin, size_t end, int value)
  */
 int advanced_binary(int *array, size_t size, int value)
 {
-	if (!array || size == 0)
+	if (!array || !size)
 		return (-1);
-
+	else if ((size == 1) && (*array == value))
+		return (0);
 	return (r_search(array, 0, size - 1, value));
 }
