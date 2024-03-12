@@ -3,6 +3,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <math.h>
 
 /**
  * struct listint_s - singly linked list
@@ -41,6 +42,7 @@ typedef struct skiplist_s
 /* Prototypes */
 int linear_search(int *array, size_t size, int value);
 int binary_search(int *array, size_t size, int value);
+int jump_search(int *array, size_t size, int value);
 
 /* Helper Prototypes */
 int r_search(int *array, size_t begin, size_t end, int value);
